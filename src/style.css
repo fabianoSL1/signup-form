@@ -10,7 +10,7 @@ body {
 	font-family: 'Poppins';
 	background-image: url("../images/bg-intro-mobile.png");
 	background-color: hsl(0, 100%, 74%);
-	color: #fff;
+	color: hsl(0, 0%, 100%);
 	font-size: 16px;
 }
 
@@ -71,6 +71,7 @@ a {
 	padding: 1rem;
 	border-radius: .35rem;
 	font-size: 1rem;
+    cursor: pointer;
 }
 
 .formulario {
@@ -82,9 +83,13 @@ a {
 	max-width: 540px;
 }
 
+.formulario .error {
+    color:
+}
+
 .formulario .campo {
 	width: 100%;
-	border :1px solid #dedede;
+	border :1px solid hsl(0, 0%, 87%);
 	color: #48474d;
 	border-radius: .3rem;
 	font-weight: 600;
@@ -92,21 +97,38 @@ a {
 	padding: 1rem .8rem;
 	margin-bottom: 1em;
 }
+.formulario .campo.error {
+    border-color: hsl(0, 100%, 74%);
+    color: hsl(0, 100%, 74%);
+    margin-bottom: .3rem;
+}
+
+.formulario .campo.error::placeholder {
+    color: hsl(0, 100%, 74%);
+}
+
+.formulario p.error {
+    color: hsl(0, 100%, 74%);
+    text-align: right;
+    font-style: italic;
+    font-weight: 500;
+    margin-bottom: 1.3rem;
+}
 
 .formulario .campo:focus {
 	outline: none;
-	border-color: #605b79;
+	border-color: hsl(250, 14%, 42%);
 }
 
 .formulario .btn.primary {
 	width: 100%;
 	color: #fff;
-	background-color: #37cc8a;
-	border-bottom: 4px solid #3eb37f;
+	background-color: hsl(153, 59%, 51%);
+	border-bottom: 4px solid hsl(153, 49%, 47%);
 }
 
 .formulario .text {
-	color: #c1bfca;
+	color: hsl(251, 9%, 77%);
 	font-size: .9em;
 	text-align: center;
 	margin-top: .5rem;
@@ -114,7 +136,7 @@ a {
 	font-weight: 500;
 }
 
-.text a {
+.formulario .text a {
 	color: hsl(0, 100%, 74%);
 }
 
