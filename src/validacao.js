@@ -6,17 +6,19 @@ botao.addEventListener('click', e => {
     campos.forEach(campo => {
         e.preventDefault();
         let {value, classList, parentNode, nextElementSibling} = campo;
+        let emailInvalid = (campo.type == 'email' && !validarEmail(value));
         value = value.trim(value);
 
-        !value ? classList.add('error') : classList.remove('error');
+        !value || emailInvalid ? classList.add('error') : classList.remove('error');
 
         if (!classList.contains('error') && nextElementSibling.tagName == 'P')
             parentNode.removeChild(nextElementSibling);
 
-        if (!value) {
+        if (!value || emailInvalid) {
             e.preventDefault();
             if (nextElementSibling.tagName != 'P') {
-                let elError = createElementError(campo.placeholder + ' cannot be empty');
+                let mensagem = emailInvalid ? 'Looks like this is not an email' : campo.placeholder + 'cannot be empty';
+                let elError = createElementError(mensagem);
                 parentNode.insertBefore(elError, campo.nextSibling);
             }
         }
@@ -30,4 +32,9 @@ function createElementError(mensagem) {
     elError.append(mensagemNode);
     elError.classList.add('error');
     return elError;
+}
+
+function validarEmail(email) {
+    const regex = /\S+@\S+\.\S+/;
+    return regex.test(email);
 }
